@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +16,145 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pD5-7c-lvW">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="486"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="739"/>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="800" height="729"/>
+                                </variation>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="b2d-e9-z9S"/>
+                                </connections>
+                            </webView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fll-39-1fX">
+                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <action selector="select:" destination="x5A-6p-PRh" eventType="editingDidEnd" id="Wn3-a8-xqH"/>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="cZs-TQ-jO2"/>
+                                </connections>
+                            </textField>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bj1-2G-BWP">
+                                <rect key="frame" x="0.0" y="537" width="600" height="63"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqs-sv-RLy">
+                                        <rect key="frame" x="285" y="17" width="30" height="30"/>
+                                        <state key="normal" title="X">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="288" y="17" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onStopLoadingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4VH-p0-0CD"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n2X-7G-k8k">
+                                        <rect key="frame" x="412" y="17" width="30" height="30"/>
+                                        <state key="normal" title=">">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="415" y="17" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onForwardButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Fjc-ZR-57A"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSn-Ov-L42">
+                                        <rect key="frame" x="348" y="17" width="30" height="30"/>
+                                        <state key="normal" title="+">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="351" y="17" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onPlusButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3w9-Ez-Ct2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6F-vk-QGy">
+                                        <rect key="frame" x="206" y="17" width="49" height="30"/>
+                                        <state key="normal" title="Reload">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="209" y="17" width="49" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4Np-3s-gdI"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSM-R2-LlL">
+                                        <rect key="frame" x="141" y="17" width="30" height="30"/>
+                                        <state key="normal" title="&lt;">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <variation key="heightClass=regular-widthClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="159" y="17" width="30" height="30"/>
+                                        </variation>
+                                        <connections>
+                                            <action selector="onBackButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="6Tm-Oq-MTo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.7700892857142857" green="0.7700892857142857" blue="0.7700892857142857" alpha="1" colorSpace="calibratedRGB"/>
+                                <variation key="heightClass=regular-widthClass=regular" ambiguous="YES" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="729" width="800" height="71"/>
+                                </variation>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Fll-39-1fX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="0ab-tf-zNW"/>
+                            <constraint firstItem="pD5-7c-lvW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="1CO-I5-j9D"/>
+                            <constraint firstItem="bj1-2G-BWP" firstAttribute="top" secondItem="Fll-39-1fX" secondAttribute="bottom" constant="679" id="9Rq-Wo-kL3"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bj1-2G-BWP" secondAttribute="trailing" constant="-16" id="9jQ-0z-P9t"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bj1-2G-BWP" secondAttribute="bottom" id="KcS-zS-Srn"/>
+                            <constraint firstItem="Fll-39-1fX" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="LeX-JQ-UQV"/>
+                            <constraint firstItem="Fll-39-1fX" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="OcL-F6-bcT"/>
+                            <constraint firstItem="bj1-2G-BWP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="XqF-ON-IPY"/>
+                            <constraint firstItem="pD5-7c-lvW" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="topMargin" id="cuz-7C-mBO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bj1-2G-BWP" secondAttribute="trailing" constant="-16" id="d2Q-WG-rGO"/>
+                            <constraint firstItem="bj1-2G-BWP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="ppL-1z-vXN"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="bj1-2G-BWP" secondAttribute="bottom" id="qzd-29-3h9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pD5-7c-lvW" secondAttribute="trailing" constant="-16" id="xag-aJ-OCz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9Rq-Wo-kL3"/>
+                                <exclude reference="9jQ-0z-P9t"/>
+                                <exclude reference="ppL-1z-vXN"/>
+                                <exclude reference="qzd-29-3h9"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="9Rq-Wo-kL3"/>
+                                <include reference="9jQ-0z-P9t"/>
+                                <exclude reference="XqF-ON-IPY"/>
+                                <exclude reference="d2Q-WG-rGO"/>
+                                <include reference="ppL-1z-vXN"/>
+                                <exclude reference="KcS-zS-Srn"/>
+                                <include reference="qzd-29-3h9"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="backButton" destination="KSM-R2-LlL" id="w9E-CZ-qEb"/>
+                        <outlet property="forwardButton" destination="n2X-7G-k8k" id="7be-pN-mv9"/>
+                        <outlet property="urlTextField" destination="Fll-39-1fX" id="EFQ-BJ-gdc"/>
+                        <outlet property="webView" destination="pD5-7c-lvW" id="QYB-Aq-mAT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="109" y="67.5"/>
         </scene>
     </scenes>
 </document>
