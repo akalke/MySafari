@@ -28,6 +28,7 @@
 #pragma navigation bar
 -(BOOL)textFieldShouldReturn:(UITextField *)textField{
     NSString *urlString = textField.text;
+    NSLog(@"%@", urlString);
 
     //Check URL string
     if([textField.text hasPrefix:@"http://"]){
@@ -42,7 +43,9 @@
     NSURL *url = [NSURL URLWithString: urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL: url];
     [self.webView loadRequest:urlRequest];
+
     return YES;
+
 }
 
 
