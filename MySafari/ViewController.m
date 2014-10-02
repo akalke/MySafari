@@ -14,7 +14,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *forwardButton;
 @property (strong, nonatomic) IBOutlet UILabel *pageName;
-@property (assign, nonatomic) CGFloat *previousPoint;
 @property (strong, nonatomic) IBOutlet UIView *topNav;
 
 
@@ -44,15 +43,15 @@
 
 //INCOMPLETE
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    UIGestureRecognizer *scrolled = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(scrollDirection):];
+    CGPoint view = [scrollView.panGestureRecognizer translationInView:scrollView];
 
-    if(self.webView.scrollView.contentOffset.y > 0){
-        NSLog(@"Scrolling");
-        self.topNav.alpha = 0.5;
+    if(view.y < 0){
+        self.topNav.hidden = YES;
     }
-}
+    else{
+        self.topNav.hidden = NO;
+    }
 
--(void)scrollDirection:(UIGestureRecognizer *)sender{
 
 }
 
@@ -112,17 +111,17 @@
 -(void)showHideNavButtons{
     //This method shows and hides the back and forward navigation items depending on if the browser has the ability to go back/forward a page.
     if(self.webView.canGoBack == YES){
-        [self.backButton setTitle:@"<" forState:UIControlStateNormal];
+        [self.backButton setEnabled:YES];
     }
     else{
-        [self.backButton setTitle:@"" forState:UIControlStateNormal];
+        [self.backButton setEnabled: NO];
     }
 
     if(self.webView.canGoForward == YES){
-        [self.forwardButton setTitle:@">" forState:UIControlStateNormal];
+        [self.forwardButton setEnabled: YES];
     }
     else{
-        [self.forwardButton setTitle:@"" forState:UIControlStateNormal];
+        [self.forwardButton setEnabled: NO];
     }
 }
 
