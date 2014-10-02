@@ -14,6 +14,9 @@
 @property (strong, nonatomic) IBOutlet UIButton *backButton;
 @property (strong, nonatomic) IBOutlet UIButton *forwardButton;
 @property (strong, nonatomic) IBOutlet UILabel *pageName;
+@property (assign, nonatomic) CGFloat *previousPoint;
+@property (strong, nonatomic) IBOutlet UIView *topNav;
+
 
 @end
 
@@ -23,6 +26,8 @@
     [super viewDidLoad];
     [self.urlTextField becomeFirstResponder];
     [self setDefaultPlaceholderURLText];
+    [self.webView.scrollView setDelegate:self];
+
     
     // Do any additional setup after loading the view, typically from a nib.
 }
@@ -39,6 +44,15 @@
 
 //INCOMPLETE
 -(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    UIGestureRecognizer *scrolled = [[UIGestureRecognizer alloc] initWithTarget:self action:@selector(scrollDirection):];
+
+    if(self.webView.scrollView.contentOffset.y > 0){
+        NSLog(@"Scrolling");
+        self.topNav.alpha = 0.5;
+    }
+}
+
+-(void)scrollDirection:(UIGestureRecognizer *)sender{
 
 }
 

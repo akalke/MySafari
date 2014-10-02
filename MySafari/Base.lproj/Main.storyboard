@@ -276,6 +276,7 @@
                         <outlet property="backButton" destination="KSM-R2-LlL" id="w9E-CZ-qEb"/>
                         <outlet property="forwardButton" destination="n2X-7G-k8k" id="7be-pN-mv9"/>
                         <outlet property="pageName" destination="CCF-Av-FFO" id="sXv-yt-b3E"/>
+                        <outlet property="topNav" destination="Ft1-bZ-aNT" id="of7-z5-mAN"/>
                         <outlet property="urlTextField" destination="Fll-39-1fX" id="EFQ-BJ-gdc"/>
                         <outlet property="webView" destination="pD5-7c-lvW" id="QYB-Aq-mAT"/>
                     </connections>
